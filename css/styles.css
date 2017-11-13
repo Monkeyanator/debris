@@ -16,3 +16,7 @@ html, body {
 .button-collapse{ 
     display: inline !important;
 }
+
+.background {
+    background-color: #4db6ac;
+}

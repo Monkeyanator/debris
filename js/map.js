@@ -22,6 +22,7 @@ function initMap() {
     marker = new google.maps.Marker({
         position: position,
         map: map,
+        draggable: true,
         title: markers[i]['description'],
     });
 
@@ -35,4 +36,10 @@ function initMap() {
 
   }
 
+}
+
+function setCurrentUserLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showPosition);        
+    }
 }
