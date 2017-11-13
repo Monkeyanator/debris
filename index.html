@@ -5,8 +5,8 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	
-	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 	<!--Custom styles !-->
 	<link rel="stylesheet" href="css/styles.css"/>
 
@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 
-	<script> 
+	<script>
 			$(document).ready(function(){
 				// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
 				$('#modal1').modal();
@@ -34,7 +34,7 @@
 		  <a href="#" class="brand-logo center">debris</a>
 
 		  <ul id="nav-mobile" class="left">
-			<li><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>				
+			<li><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
 		  </ul>
 
 		  <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -82,37 +82,42 @@
 				<form class="col s12">
 				  <div class="row">
 					<div class="input-field col s6">
-					  <input id="first_name" type="text" class="validate">
-					  <label for="first_name">First Name</label>
+					  <input id="name" type="text" class="validate">
+					  <label for="first_name">First Name, Last Name</label>
 					</div>
-					<div class="input-field col s6">
+					<!-- <div class="input-field col s3">
 					  <input id="last_name" type="text" class="validate">
 					  <label for="last_name">Last Name</label>
-					</div>
+					</div> -->
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">Email</label>
+          </div>
+
 				  </div>
 				  <div class="row">
-						<div class="input-field col s6">
-						  <input id="first_name" type="text" class="validate">
-						  <label for="first_name">Email</label>
-						</div>
 						<div class="input-field col s6">
 						  <input id="last_name" type="text" class="validate">
 						  <label for="last_name">Phone number</label>
 						</div>
+            <div class="input-field col s6">
+              <input id="first_name" type="text" class="validate">
+              <label for="first_name">Organization</label>
+            </div>
 					</div>
 					<div class="row">
-							<div class="input-field col s6">
-							  <input id="first_name" type="text" class="validate">
-							  <label for="first_name">Organization</label>
-							</div>
 							<div class="input-field col s6">
 							  <input id="last_name" type="text" class="validate">
 							  <label for="last_name">Proposed plan</label>
 							</div>
+              <div class="input-field col s6">
+                <input type="text" class="datepicker">
+                <label for="first_name">Completed by</label>
+              </div>
 						</div>
 				</form>
 			  </div>
-					
+
 		</div>
 		<div class="modal-footer">
 		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Submit</a>
@@ -131,12 +136,19 @@
 					<label for="last_name">Title</label>
 				</div>
 			</div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">Location</label>
+        </div>
+      </div>
 			<div class="row">
 				<div class="input-field col s6">
 					<input id="first_name" type="text" class="validate">
 					<label for="first_name">Description</label>
 				</div>
 			</div>
+
 			<div class="file-field input-field">
 				<div class="btn">
 					<span>Upload Image</span>
@@ -152,11 +164,12 @@
 		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
 		</div>
 	  </div>
-			  
+
 
 	<div id="map"></div>
 	<script src="js/data.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/datepicker.js"></script>
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3j-gUjpdC_DXhZrk8LjH4BGz6FyE1rQ&callback=initMap">
