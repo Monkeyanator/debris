@@ -22,7 +22,9 @@
 	<script> 
 			$(document).ready(function(){
 				// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-				$('.modal').modal();
+				$('#modal1').modal();
+				$('#modal2').modal();
+				$('#modal3').modal();
 				$(".button-collapse").sideNav();
 			});
 	</script>
@@ -36,11 +38,40 @@
 		  </ul>
 
 		  <ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a class="waves-effect waves-light btn" href="#debris-submission">Report debris</a></li>
+			<li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Report debris</a></li>
 			<li><a class="modal-trigger" href="#modal1"><i class="material-icons">info</i></a></li>
 		  </ul>
 		</div>
 	</nav>
+
+	<ul id="slide-out" class="side-nav">
+			<li><div class="user-view">
+			  <div class="background">
+				<img src="images/office.jpg">
+			  </div>
+			  <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+			  <a href="#!name"><span class="white-text name">John Doe</span></a>
+			  <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+			</div></li>
+			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+			<li><a href="#!">Second Link</a></li>
+			<li><div class="divider"></div></li>
+			<li><a class="subheader">Subheader</a></li>
+			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+		</ul>
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+		<div class="modal-content">
+		  <h4>Introduction 🔥</h4>
+		  <p>Hi pal! You seemed lost, so we have a short introduction intended to orient you!</p>
+		</div>
+		<div class="modal-footer">
+		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+		</div>
+	  </div>
+
 
     <!-- Structure -->
     <div id="modal2" class="modal bottom-sheet">
@@ -88,38 +119,34 @@
 		</div>
 	</div>
 
-	<ul id="slide-out" class="side-nav">
-			<li><div class="user-view">
-			  <div class="background">
-				<img src="images/office.jpg">
-			  </div>
-			  <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-			  <a href="#!name"><span class="white-text name">John Doe</span></a>
-			  <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-			</div></li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-			<li><a href="#!">Second Link</a></li>
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-		</ul>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-		<div class="modal-content">
-		  <h4>Introduction 🔥</h4>
-		  <p>Hi pal! You seemed lost, so we have a short introduction intended to orient you!</p>
-		</div>
-		<div class="modal-footer">
-		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
-		</div>
-	  </div>
 
   <!-- Modal Structure -->
   <div id="modal3" class="modal modal-fixed-footer">
 		<div class="modal-content">
-		  <h4>Introduction 🔥</h4>
-		  <p>Hi pal! You seemed lost, so we have a short introduction intended to orient you!</p>
+		  <h4>Report debris 📝</h4>
+		  <form action="#">
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="last_name" type="text" class="validate">
+					<label for="last_name">Title</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="first_name" type="text" class="validate">
+					<label for="first_name">Description</label>
+				</div>
+			</div>
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>Upload Image</span>
+					<input type="file">
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text">
+				</div>
+			</div>
+		</form>
 		</div>
 		<div class="modal-footer">
 		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
