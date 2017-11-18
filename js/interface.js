@@ -43,6 +43,7 @@ $(document).ready(function(){
               console.log(newMarker);
 
               //add marker
+              markers.push(newMarker);  
               addMarkerToMapInstance(window.map, newMarker);
 
             } else {
