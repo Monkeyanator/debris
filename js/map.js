@@ -33,28 +33,27 @@ function initMap() {
       infoWindow.setContent(this.content);
       infoWindow.open(this.getMap(), this);
     });
-
   }
-  document.getElementById("submit-report").addEventListener("click", function(){
-    var latitude = document.getElementById("latitude").value;
-    var longitude = document.getElementById("longitude").value;
-    var title = document.getElementById("title").value;
-    console.log(latitude, longitude);
-    var position = new google.maps.LatLng(latitude, longitude);
-    addMarker(position, title);
-  });
-  // 38.185, -85.591749
-
-  //need to ask sam how he added the url + pulled up image in the maps initialization
-  function addMarker(location, title) {
-    var icon = new google.maps.Marker({
-      position: location,
-      map: map,
-      title: title
-    });
-    markers.push(icon);
-    console.log("successfully pushed marker");
-  }
+  // document.getElementById("submit-report").addEventListener("click", function(){
+  //   var latitude = document.getElementById("latitude").value;
+  //   var longitude = document.getElementById("longitude").value;
+  //   var title = document.getElementById("title").value;
+  //   console.log(latitude, longitude);
+  //   var position = new google.maps.LatLng(latitude, longitude);
+  //   addMarker(position, title);
+  // });
+  // // 38.185, -85.591749
+  //
+  // //need to ask sam how he added the url + pulled up image in the maps initialization
+  // function addMarker(location, title) {
+  //   var icon = new google.maps.Marker({
+  //     position: location,
+  //     map: map,
+  //     title: title
+  //   });
+  //   markers.push(icon);
+  //   console.log("successfully pushed marker");
+  // }
 
   var card = document.getElementById('pac-card');
   var input = document.getElementById('pac-input');
@@ -90,12 +89,12 @@ function initMap() {
     }
 
     // If the place has a geometry, then present it on a map.
-    // if (place.geometry.viewport) {
-    //   map.fitBounds(place.geometry.viewport);
-    // } else {
-    //   map.setCenter(place.geometry.location);
-    //   map.setZoom(17);  // Why 17? Because it looks good.
-    // }
+    if (place.geometry.viewport) {
+      // map.fitBounds(place.geometry.viewport);
+      map.setCenter(place.geometry.location);
+    } else {
+      map.setCenter(place.geometry.location);
+    }
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
@@ -114,24 +113,25 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
-  // Sets a listener on a radio button to change the filter type on Places
-  // Autocomplete.
-  // function setupClickListener(id, types) {
-  //   var radioButton = document.getElementById(id);
-  //   radioButton.addEventListener('click', function() {
-  //     autocomplete.setTypes(types);
-  //   });
-  // }
-  //
-  // setupClickListener('changetype-all', []);
-  // setupClickListener('changetype-address', ['address']);
-  // setupClickListener('changetype-establishment', ['establishment']);
-  // setupClickListener('changetype-geocode', ['geocode']);
-  //
-  // document.getElementById('use-strict-bounds')
-  //     .addEventListener('click', function() {
-  //       console.log('Checkbox clicked! New state=' + this.checked);
-  //       autocomplete.setOptions({strictBounds: this.checked});
-  //     });
+  document.getElementById("form-btn-submit").addEventListener("click", function(){
+    var title = document.getElementById("title-form").value;
+    // var description = document.getElementById("description").value;
+    console.log(autocomplete.location);
+    console.log(title + ' ' + description);
+    // var position = document.getElementById("location").value;
+    // console.log(position);
+    // addMarker(position, title);
+  });
+  // 38.185, -85.591749
 
+  //need to ask sam how he added the url + pulled up image in the maps initialization
+  function addMarker(location, title) {
+    var icon = new google.maps.Marker({
+      position: location,
+      map: map,
+      title: title
+    });
+    markers.push(icon);
+    console.log("successfully pushed marker");
+  };
 }
