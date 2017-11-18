@@ -35,15 +35,19 @@ function initMap() {
   document.getElementById("submit-report").addEventListener("click", function(){
     var latitude = document.getElementById("latitude").value;
     var longitude = document.getElementById("longitude").value;
+    var title = document.getElementById("title").value;
     console.log(latitude, longitude);
     var position = new google.maps.LatLng(latitude, longitude);
-    addMarker(position);
+    addMarker(position, title);
   });
   // 38.185, -85.591749
-  function addMarker(location) {
+
+  //need to ask sam how he added the url + pulled up image in the maps initialization
+  function addMarker(location, title) {
     var icon = new google.maps.Marker({
       position: location,
       map: map,
+      title: title
     });
     markers.push(icon);
     console.log("successfully pushed marker");
