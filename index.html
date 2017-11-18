@@ -1,180 +1,181 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<!--Custom styles !-->
-	<link rel="stylesheet" href="css/styles.css"/>
+  <!--Custom styles !-->
+  <link rel="stylesheet" href="css/styles.css"/>
 
-	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
 
-  <body>
-	<!--Import jQuery before materialize.js-->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
+<body>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
 
-	<script>
-			$(document).ready(function(){
-				// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-				$('#modal1').modal();
-				$('#modal2').modal();
-				$('#modal3').modal();
-				$(".button-collapse").sideNav();
-			});
-	</script>
+  <script>
+  $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('#modal1').modal();
+    $('#modal2').modal();
+    $('#modal3').modal();
+    $(".button-collapse").sideNav();
+  });
+  </script>
 
-	<nav>
-		<div class="nav-wrapper">
-		  <a href="#" class="brand-logo center">debris</a>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">debris</a>
 
-		  <ul id="nav-mobile" class="left">
-			<li><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
-		  </ul>
+      <ul id="nav-mobile" class="left">
+        <li><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
+      </ul>
 
-		  <ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Report debris</a></li>
-			<li><a class="modal-trigger" href="#modal1"><i class="material-icons">info</i></a></li>
-		  </ul>
-		</div>
-	</nav>
-
-	<ul id="slide-out" class="side-nav">
-			<li><div class="user-view">
-			  <div class="background">
-				<img src="images/office.jpg">
-			  </div>
-			  <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-			  <a href="#!name"><span class="white-text name">John Doe</span></a>
-			  <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-			</div></li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-			<li><a href="#!">Second Link</a></li>
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-		</ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Report debris</a></li>
+        <li><a class="modal-trigger" href="#modal1"><i class="material-icons">info</i></a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <ul id="slide-out" class="side-nav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
 
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
-		<div class="modal-content">
-		  <h4>About: Debris 🔥</h4>
-		  <p>Debris is a Google Maps-based interface that allows you to report the presence and location of debris and detritus leftover from a natural disaster.  You can also find and respond to and resolve these issues on the map. Debris is meant to be an intuitive experience to aid people who wish to participate in natural disaster cleanup or report such issues.</p>
-		  <p>Debris is a collaborative project for EECS 330: Human Computer Interaction.   The collaborators are Naomi Chan, Samuel Naser, Michael Guo, and Alex Zhu, who are students at Northwestern University.</p>
-		</div>
-		<div class="modal-footer">
-		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
-		</div>
-	  </div>
+    <div class="modal-content">
+      <h4>About: Debris 🔥</h4>
+      <p>Debris is a Google Maps-based interface that allows you to report the presence and location of debris and detritus leftover from a natural disaster.  You can also find and respond to and resolve these issues on the map. Debris is meant to be an intuitive experience to aid people who wish to participate in natural disaster cleanup or report such issues.</p>
+      <p>Debris is a collaborative project for EECS 330: Human Computer Interaction.   The collaborators are Naomi Chan, Samuel Naser, Michael Guo, and Alex Zhu, who are students at Northwestern University.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+    </div>
+  </div>
 
 
-    <!-- Structure -->
-    <div id="modal2" class="modal bottom-sheet">
-		<div class="modal-content">
-		  <h4>Resolve debris</h4>
-		  <p>Date reported: 11/10/17</p>
-		  <div class="row">
-				<form class="col s12">
-				  <div class="row">
-					<div class="input-field col s6">
-					  <input id="name" type="text" class="validate">
-					  <label for="first_name">First Name, Last Name</label>
-					</div>
-					<!-- <div class="input-field col s3">
-					  <input id="last_name" type="text" class="validate">
-					  <label for="last_name">Last Name</label>
-					</div> -->
+  <!-- Structure -->
+  <div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Resolve debris</h4>
+      <p>Date reported: 11/10/17</p>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="name" type="text" class="validate">
+              <label for="first_name">First Name, Last Name</label>
+            </div>
+            <!-- <div class="input-field col s3">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div> -->
           <div class="input-field col s6">
             <input id="first_name" type="text" class="validate">
             <label for="first_name">Email</label>
           </div>
 
-				  </div>
-				  <div class="row">
-						<div class="input-field col s6">
-						  <input id="last_name" type="text" class="validate">
-						  <label for="last_name">Phone number</label>
-						</div>
-            <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">Organization</label>
-            </div>
-					</div>
-					<div class="row">
-							<div class="input-field col s6">
-							  <input id="last_name" type="text" class="validate">
-							  <label for="last_name">Proposed plan</label>
-							</div>
-              <div class="input-field col s6">
-                <input type="text" class="datepicker">
-                <label for="first_name">Completed by</label>
-              </div>
-						</div>
-				</form>
-			  </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Phone number</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">Organization</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Proposed plan</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" class="datepicker">
+            <label for="first_name">Completed by</label>
+          </div>
+        </div>
+      </form>
+    </div>
 
-		</div>
-		<div class="modal-footer">
-		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Submit</a>
-		</div>
-	</div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Submit</a>
+  </div>
+</div>
 
 
-  <!-- Modal Structure -->
-  <div id="modal3" class="modal modal-fixed-footer">
-		<div class="modal-content">
-		  <h4>Report debris 📝</h4>
-		  <form action="#">
-			<div class="row">
-				<div class="input-field col s6">
-					<input id="last_name" type="text" class="validate">
-					<label for="last_name">Title</label>
-				</div>
-			</div>
+<!-- Modal Structure -->
+<div id="modal3" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Report debris 📝</h4>
+    <form action="#">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Title</label>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s6">
           <input id="first_name" type="text" class="validate">
           <label for="first_name">Location</label>
         </div>
       </div>
-			<div class="row">
-				<div class="input-field col s6">
-					<input id="first_name" type="text" class="validate">
-					<label for="first_name">Description</label>
-				</div>
-			</div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">Description</label>
+        </div>
+      </div>
 
-			<div class="file-field input-field">
-				<div class="btn">
-					<span>Upload Image</span>
-					<input type="file">
-				</div>
-				<div class="file-path-wrapper">
-					<input class="file-path validate" type="text">
-				</div>
-			</div>
-		</form>
-		</div>
-		<div class="modal-footer">
-		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
-		</div>
-	  </div>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Upload Image</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+  </div>
+</div>
 
 
-	<div id="map"></div>
-	<script src="js/data.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/datepicker.js"></script>
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3j-gUjpdC_DXhZrk8LjH4BGz6FyE1rQ&callback=initMap">
-    </script>
+<div id="map"></div>
+<script src="js/data.js"></script>
+<script src="js/map.js"></script>
+<script src="js/datepicker.js"></script>
+<script src="js/debris-form.js"></script>
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3j-gUjpdC_DXhZrk8LjH4BGz6FyE1rQ&callback=initMap">
+</script>
 
-  </body>
+</body>
 </html>
