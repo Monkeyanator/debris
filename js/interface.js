@@ -31,6 +31,8 @@ $(document).ready(function(){
 
         geocoder.geocode({'address': address}, function(results, status) {
             if (status == 'OK') {
+              $("#pac-card").hide();
+
 
               //grab form data
               var title = $("#debris-form-title").val();
@@ -58,7 +60,6 @@ $(document).ready(function(){
               $("#debris-form-title").val("");
               $("#debris-form-description").val("");
               $("#debris-form-location").val(null);
-              $("#pac-card").hide();
             } else {
               alert('Geocode was not successful for the following reason: ' + status);
             }
