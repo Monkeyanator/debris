@@ -10,7 +10,7 @@ function initMap() {
   //get reference for all the UI elements
   //pac-card should be invisible by default
   var card = document.getElementById('pac-card');
-  var input = document.getElementById('pac-input');
+  var input = document.getElementById('debris-form-location');
   var types = document.getElementById('type-selector');
   var strictBounds = document.getElementById('strict-bounds-selector');
 
@@ -18,18 +18,6 @@ function initMap() {
   for( i = 0; i < markers.length; i++) 
     addMarkerToMapInstance(window.map, markers[i]);
   
-
-
-  //need to ask sam how he added the url + pulled up image in the maps initialization
-  function addMarker(location, title) {
-    var icon = new google.maps.Marker({
-      position: location,
-      map: window.map,
-      title: title
-    });
-    markers.push(icon);
-    console.log("successfully pushed marker");
-  }
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
@@ -77,9 +65,6 @@ function initMap() {
     infowindowContent.children['place-address'].textContent = address;
     infowindow.open(window.map, marker);
   });
-
-
-
 }
 
 function markerDataToContent(marker){

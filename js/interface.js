@@ -11,10 +11,10 @@ $(document).ready(function(){
     }); 
 
     //set up events for form submission
-    $("#form-btn").click(() => {
+    $("#form-btn-submit").click(() => {
 
         var geocoder = new google.maps.Geocoder();
-        var address = $("#pac-input").val();
+        var address = $("#debris-form-location").val();
 
         geocoder.geocode({'address': address}, function(results, status) {
             if (status == 'OK') {
@@ -37,6 +37,8 @@ $(document).ready(function(){
               newMarker.description = description;
               newMarker.markerUrl = "http://probalrashid.com/wp-content/uploads/2015/05/IMG_7184.jpg"; 
 
+              console.log(newMarker);
+
               //add marker
               addMarkerToMapInstance(window.map, newMarker);
             
@@ -44,8 +46,6 @@ $(document).ready(function(){
               alert('Geocode was not successful for the following reason: ' + status);
             }
           });
-
-          var position = new google.maps.LatLng(latitude, longitude);
 
     }); 
 

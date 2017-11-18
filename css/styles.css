@@ -1,7 +1,10 @@
 #map {
     height: 100%;
 }
+.btn {
+  background-color: #42a5f5 !important;
 
+}
 html, body {
     height: 100%;
     margin: 0;
@@ -16,14 +19,27 @@ html, body {
 .button-collapse{
     display: inline !important;
 }
-
-#form-btn{
+#upload{
+  background-color: #42a5f5;
+}
+#form-btn-submit{
   float:right;
+  height: 40px;
+  width: 160px;
+}
+#form-btn-cancel{
+  float:left;
+  height: 40px;
+  width: 160px;
 }
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
   height: 100%;
+}
+#upload-btn {
+  height: 40px;
+  width: 160px;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -94,7 +110,7 @@ html, body {
 
 #title {
   color: #fff;
-  background-color: #4d90fe;
+  background-color: #424242;
   font-size: 25px;
   font-weight: 500;
   padding: 6px 12px;
