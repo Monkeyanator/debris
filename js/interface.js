@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     //hide card on submit, show when report debris is pressed
     //toggle when pressing report debris
-    $("#report-debris-button, #form-btn-cancel,#form-btn-submit").click(() => {
+    $("#report-debris-button").click(() => {
         if($("#pac-card").is(":visible")){
             $("#pac-card").hide();
         } else{
@@ -10,17 +10,29 @@ $(document).ready(function(){
         }
     });
 
+    $("#form-btn-cancel").click(() => {
+            $("#pac-card").hide();
+            $("#debris-form-title").val("");
+            $("#debris-form-description").val("");
+            $("#debris-form-location").val(null);
+    });
+
+    $('#btn-get-geo').click(() => {
+
+    });
 
     //set up events for form submission
     $("#form-btn-submit").click(() => {
       // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast('Debris reported', 4000, 'rounded') // 4000 is the duration of the toast
+      Materialize.toast('Debris reported!', 4000, 'rounded') // 4000 is the duration of the toast
 
         var geocoder = new google.maps.Geocoder();
         var address = $("#debris-form-location").val();
 
         geocoder.geocode({'address': address}, function(results, status) {
             if (status == 'OK') {
+              $("#pac-card").hide();
+
 
               //grab form data
               var title = $("#debris-form-title").val();
@@ -43,9 +55,11 @@ $(document).ready(function(){
               console.log(newMarker);
 
               //add marker
-              markers.push(newMarker);  
+              markers.push(newMarker);
               addMarkerToMapInstance(window.map, newMarker);
-
+              $("#debris-form-title").val("");
+              $("#debris-form-description").val("");
+              $("#debris-form-location").val(null);
             } else {
               alert('Geocode was not successful for the following reason: ' + status);
             }
