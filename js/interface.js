@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
 
     $('#btn-get-geo').click(() => {
-            
+            geoLocate();
     });
 
     //set up events for form submission
