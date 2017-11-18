@@ -61,6 +61,27 @@ html, body {
   display: none;
 }
 
+.avatar {
+  /* This image is 687 wide by 1024 tall, similar to your aspect ratio */
+  background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
+  
+  /* make a square container */
+  width: 40px;
+  height: 40px;
+
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+
+  /* center the image vertically and horizontally */
+  background-position: center;
+
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
 #map #infowindow-content {
   display: inline;
 }
