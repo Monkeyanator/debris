@@ -17,6 +17,10 @@ $(document).ready(function(){
             $("#debris-form-location").val(null);
     });
 
+    $('#btn-get-geo').click(() => {
+
+    });
+
     //set up events for form submission
     $("#form-btn-submit").click(() => {
       // Materialize.toast(message, displayLength, className, completeCallback);
