@@ -10,7 +10,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#form-btn-cancel,#form-btn-submit").click(() => {
+    $("#form-btn-cancel").click(() => {
             $("#pac-card").hide();
             $("#debris-form-title").val("");
             $("#debris-form-description").val("");
@@ -49,13 +49,12 @@ $(document).ready(function(){
               console.log(newMarker);
 
               //add marker
-              markers.push(newMarker);  
+              markers.push(newMarker);
               addMarkerToMapInstance(window.map, newMarker);
               $("#debris-form-title").val("");
               $("#debris-form-description").val("");
               $("#debris-form-location").val(null);
-
-
+              $("#pac-card").hide();
             } else {
               alert('Geocode was not successful for the following reason: ' + status);
             }
