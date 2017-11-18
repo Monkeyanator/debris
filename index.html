@@ -53,16 +53,16 @@
 </div>
 <div id="pac-container" class = "form">
   <div class = "row">
-    <input type="text"placeholder="Title">
+    <input id="debris-form-title" type="text"placeholder="Title">
   </div>
   <div class = "row">
-    <input type="text"placeholder="Description">
+    <input id="debris-form-description" type="text"placeholder="Description">
   </div>
   <div class = "row">
     <input id="pac-input" type="text"placeholder="Enter a location">
   </div>
   <div class = "row">
-    <button class="btn waves-effect waves-light" id ="form-btn"type="submit" name="action">Submit
+    <button class="btn waves-effect waves-light" id="form-btn" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
     </button>
   </div>
@@ -82,7 +82,8 @@
     </ul>
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#modal3">Report debris</a></li>
+      <!-- href="#modal3" needed for materialize popup, should also add modal-trigger class back !-->
+      <li><a class="waves-effect waves-light btn" id="report-debris-button" >Report debris</a></li>
       <li><a class="modal-trigger" href="#modal1"><i class="material-icons">info</i></a></li>
     </ul>
   </div>
@@ -214,6 +215,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/map.js"></script>
+<script type="text/javascript" src="js/interface.js"></script>
 <script src="js/datepicker.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3j-gUjpdC_DXhZrk8LjH4BGz6FyE1rQ&libraries=places&callback=initMap"
 async defer></script>
