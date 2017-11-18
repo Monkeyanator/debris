@@ -23,17 +23,12 @@ $(document).ready(function(){
 
     //set up events for form submission
     $("#form-btn-submit").click(() => {
-      // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast('Debris reported!', 4000, 'rounded') // 4000 is the duration of the toast
-
+      $("#pac-card").hide();
         var geocoder = new google.maps.Geocoder();
         var address = $("#debris-form-location").val();
 
         geocoder.geocode({'address': address}, function(results, status) {
             if (status == 'OK') {
-              $("#pac-card").hide();
-
-
               //grab form data
               var title = $("#debris-form-title").val();
               var description = $("#debris-form-description").val();
@@ -60,6 +55,9 @@ $(document).ready(function(){
               $("#debris-form-title").val("");
               $("#debris-form-description").val("");
               $("#debris-form-location").val(null);
+              // Materialize.toast(message, displayLength, className, completeCallback);
+              Materialize.toast('Debris reported!', 4000, 'rounded') // 4000 is the duration of the toast
+
             } else {
               alert('Geocode was not successful for the following reason: ' + status);
             }
