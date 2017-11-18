@@ -15,9 +15,9 @@ function initMap() {
   var strictBounds = document.getElementById('strict-bounds-selector');
 
   //use locations from data.js for the markers
-  for( i = 0; i < markers.length; i++) 
+  for( i = 0; i < markers.length; i++)
     addMarkerToMapInstance(window.map, markers[i]);
-  
+
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
@@ -47,7 +47,7 @@ function initMap() {
       return;
     }
 
-    window.map.setCenter(place.geometry.location);    
+    window.map.setCenter(place.geometry.location);
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
@@ -78,8 +78,7 @@ function geoLocate(){
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(window.map);
+            Materialize.toast('Location Found!', 3000, 'rounded')
             window.map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, window.map.getCenter());
@@ -104,8 +103,8 @@ function markerDataToContent(marker){
   var contentString = "<div><img width='180px' src="
     + "'" + marker.markerUrl + "''"
     + "/></div>"
-    + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>";  
-  
+    + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>";
+
   return contentString;
 
 }
@@ -114,19 +113,19 @@ function addMarkerToMapInstance(mapInstance, marker){
 
     //load position from data.js
     var position = new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']);
-    
+
     //generate content string based on url
     var contentString = markerDataToContent(marker);
-    
+
     marker = new google.maps.Marker({
         position: position,
         map: mapInstance,
         title: marker['description'],
     });
-    
+
     marker.content = contentString;
     var infoWindow = new google.maps.InfoWindow();
-    
+
     marker.addListener('click', function(){
         infoWindow.setContent(this.content);
         infoWindow.open(this.getMap(), this);
