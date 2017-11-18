@@ -8,7 +8,6 @@ function initMap() {
   var input = document.getElementById('pac-input');
   var types = document.getElementById('type-selector');
   var strictBounds = document.getElementById('strict-bounds-selector');
-
   //use locations from data.js for the markers
   //data generated from project.py script
   for( i = 0; i < markers.length; i++) {
