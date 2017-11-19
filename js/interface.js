@@ -21,6 +21,10 @@ $(document).ready(function(){
     geoLocate();
   });
 
+  $("#resolve-debris-submit").click(()=>{
+    Materialize.toast('Debris Resolved', 4000, 'rounded')
+  });
+
   //set up events for form submission
   $("#form-btn-submit").click(() => {
     $("#pac-card").hide();
