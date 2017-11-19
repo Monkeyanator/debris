@@ -1,68 +1,68 @@
 $(document).ready(function(){
 
-    //hide card on submit, show when report debris is pressed
-    //toggle when pressing report debris
-    $("#report-debris-button").click(() => {
-        if($("#pac-card").is(":visible")){
-            $("#pac-card").hide();
-        } else{
-            $("#pac-card").show();
-        }
-    });
-
-    $("#form-btn-cancel").click(() => {
-            $("#pac-card").hide();
-            $("#debris-form-title").val("");
-            $("#debris-form-description").val("");
-            $("#debris-form-location").val(null);
-    });
-
-    $('#btn-get-geo').click(() => {
-            geoLocate();
-    });
-
-    //set up events for form submission
-    $("#form-btn-submit").click(() => {
+  //hide card on submit, show when report debris is pressed
+  //toggle when pressing report debris
+  $("#report-debris-button").click(() => {
+    if($("#pac-card").is(":visible")){
       $("#pac-card").hide();
-        var geocoder = new google.maps.Geocoder();
-        var address = $("#debris-form-location").val();
+    } else{
+      $("#pac-card").show();
+    }
+  });
 
-        geocoder.geocode({'address': address}, function(results, status) {
-            if (status == 'OK') {
-              //grab form data
-              var title = $("#debris-form-title").val();
-              var description = $("#debris-form-description").val();
+  $("#form-btn-cancel").click(() => {
+    $("#pac-card").hide();
+    $("#debris-form-title").val("");
+    $("#debris-form-description").val("");
+    $("#debris-form-location").val(null);
+  });
 
-              //grab the location
-              var location = results[0].geometry.location;
-              var lat = location.lat();
-              var lng = location.lng();
+  $('#btn-get-geo').click(() => {
+    geoLocate();
+  });
 
-              //intialize marker data
-              var newMarker = {};
-              newMarker.location = {};
-              newMarker.location.lat = lat;
-              newMarker.location.lng = lng;
-              newMarker.title = title;
-              newMarker.description = description;
-              newMarker.markerUrl = "http://probalrashid.com/wp-content/uploads/2015/05/IMG_7184.jpg";
+  //set up events for form submission
+  $("#form-btn-submit").click(() => {
+    $("#pac-card").hide();
+    var geocoder = new google.maps.Geocoder();
+    var address = $("#debris-form-location").val();
 
-              console.log(newMarker);
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status == 'OK') {
+        //grab form data
+        var title = $("#debris-form-title").val();
+        var description = $("#debris-form-description").val();
 
-              //add marker
-              markers.push(newMarker);
-              addMarkerToMapInstance(window.map, newMarker);
-              $("#debris-form-title").val("");
-              $("#debris-form-description").val("");
-              $("#debris-form-location").val(null);
-              // Materialize.toast(message, displayLength, className, completeCallback);
-              Materialize.toast('Debris reported!', 4000, 'rounded') // 4000 is the duration of the toast
+        //grab the location
+        var location = results[0].geometry.location;
+        var lat = location.lat();
+        var lng = location.lng();
 
-            } else {
-              alert('Geocode was not successful for the following reason: ' + status);
-            }
-          });
+        //intialize marker data
+        var newMarker = {};
+        newMarker.location = {};
+        newMarker.location.lat = lat;
+        newMarker.location.lng = lng;
+        newMarker.title = title;
+        newMarker.description = description;
+        newMarker.markerUrl = "http://probalrashid.com/wp-content/uploads/2015/05/IMG_7184.jpg";
 
+        console.log(newMarker);
+
+        //add marker
+        markers.push(newMarker);
+        addMarkerToMapInstance(window.map, newMarker);
+        $("#debris-form-title").val("");
+        $("#debris-form-description").val("");
+        $("#debris-form-location").val(null);
+        // Materialize.toast(message, displayLength, className, completeCallback);
+        Materialize.toast('Debris reported!', 4000, 'rounded') // 4000 is the duration of the toast
+
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
     });
+
+  });
 
 });

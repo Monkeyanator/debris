@@ -16,7 +16,7 @@ function initMap() {
 
   //use locations from data.js for the markers
   for( i = 0; i < markers.length; i++)
-    addMarkerToMapInstance(window.map, markers[i]);
+  addMarkerToMapInstance(window.map, markers[i]);
 
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
@@ -71,45 +71,45 @@ function geoLocate(){
   var infoWindow;
   infoWindow = new google.maps.InfoWindow;
   if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-            infoWindow.setPosition(pos);
-            Materialize.toast('Location Found!', 3000, 'rounded')
-            window.map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, window.map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, window.map.getCenter());
-        }
+      infoWindow.setPosition(pos);
+      Materialize.toast('Location Found!', 3000, 'rounded')
+      window.map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, window.map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, window.map.getCenter());
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-}
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+  }
 
-function markerDataToContent(marker){
+  function markerDataToContent(marker){
 
-  //generate the content string
-  var contentString = "<div><img width='180px' src="
+    //generate the content string
+    var contentString = "<div><img width='180px' src="
     + "'" + marker.markerUrl + "''"
     + "/></div>"
     + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>";
 
-  return contentString;
+    return contentString;
 
-}
+  }
 
-function addMarkerToMapInstance(mapInstance, marker){
+  function addMarkerToMapInstance(mapInstance, marker){
 
     //load position from data.js
     var position = new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']);
@@ -118,17 +118,17 @@ function addMarkerToMapInstance(mapInstance, marker){
     var contentString = markerDataToContent(marker);
 
     marker = new google.maps.Marker({
-        position: position,
-        map: mapInstance,
-        title: marker['description'],
+      position: position,
+      map: mapInstance,
+      title: marker['description'],
     });
 
     marker.content = contentString;
     var infoWindow = new google.maps.InfoWindow();
 
     marker.addListener('click', function(){
-        infoWindow.setContent(this.content);
-        infoWindow.open(this.getMap(), this);
+      infoWindow.setContent(this.content);
+      infoWindow.open(this.getMap(), this);
     });
 
-}
+  }
