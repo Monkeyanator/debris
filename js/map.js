@@ -7,6 +7,9 @@ function initMap() {
     center: initialLocation
   });
 
+  window.RED_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png";
+  window.YELLOW_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png";
+
   //get reference for all the UI elements
   //pac-card should be invisible by default
   var card = document.getElementById('pac-card');
@@ -18,12 +21,14 @@ function initMap() {
   //Testing appending list elements
   //$('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Third Link With Waves</a></li>');
   //use locations from data.js for the markers
-  for( i = 0; i < markers.length; i++){
-    addMarkerToMapInstance(window.map, markers[i]);
-    addMarkerDataToList(markers[i]);
+  for( i = 0; i < window.markers.length; i++){
+    //add the marker to the map
+    var currentMarker = addMarkerToMapInstance(window.map, window.markers[i]);
+    window.markers[i].markerReference = currentMarker;
+    addMarkerDataToList(markers[i]);    
   }
-  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);
-  window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);  
 
   var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -35,6 +40,7 @@ function initMap() {
   var infowindow = new google.maps.InfoWindow();
   var infowindowContent = document.getElementById('infowindow-content');
   infowindow.setContent(infowindowContent);
+
   var marker = new google.maps.Marker({
     map: window.map,
     anchorPoint: new google.maps.Point(0, -29)
@@ -109,6 +115,23 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
   }
 
+  function debrisResolveSubmitFormToData(markerReference, formData){
+
+    //generate the content string
+    var contentString = "<div><img width='180px' src="
+    + "'" + markerReference.markerUrl + "''"
+    + "/></div>"
+    + formData.name + " will resolve the debris on " + formData.date;
+
+    markerReference.content = contentString;
+    var infoWindow = new google.maps.InfoWindow();
+
+    infoWindow.setContent(contentString);
+    infoWindow.open(markerReference.getMap(), markerReference); 
+
+    return contentString;
+  }
+  
   function addMarkerDataToList(marker){
     $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src='
       + ' " ' + marker.markerUrl + ' " >'
@@ -125,10 +148,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     var contentString = markerDataToContent(marker);
 
     marker = new google.maps.Marker({
+      icon: window.RED_MARKER_URL,
       position: position,
       map: mapInstance,
       title: marker['description'],
     });
+
+    //add event listener to handle when the marker is clicked
+    marker.addListener('click', function() {
+      window.currentMarker = this;
+    });  
+    
 
     marker.content = contentString;
     var infoWindow = new google.maps.InfoWindow();
@@ -137,5 +167,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setContent(this.content);
       infoWindow.open(this.getMap(), this);
     });
+
+    return marker;
 
   }
