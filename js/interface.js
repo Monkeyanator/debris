@@ -10,6 +10,11 @@ $(document).ready(function(){
     }
   });
 
+
+  // $('.drop1').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+
+
+
 // if we cancel the btn, we reset all values to default and we hide
   $("#form-btn-cancel").click(() => {
     $("#pac-card").hide();
