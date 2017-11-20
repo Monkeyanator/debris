@@ -12,10 +12,7 @@ $(document).ready(function(){
       $("#pac-card").show();
     }
   });
-  $("#info-btn-click").click(()=>{
-    $('#modal1').modal('close');
-  })
-// if we cancel the btn, we reset all values to default and we hide
+  // if we cancel the btn, we reset all values to default and we hide
   $("#form-btn-cancel").click(() => {
     $("#pac-card").hide();
     $("#debris-form-title").val("");
@@ -31,22 +28,38 @@ $(document).ready(function(){
   //set up events for resolving debris submission
   $("#resolve-debris-submit").click(() => {
 
-    //display materialize
-    Materialize.toast('Debris Resolved', 4000, 'rounded');
-
     var name = $("#resolve-debris-name").val();
     var email = $("#resolve-debris-email").val();
     var phone = $("#resolve-debris-phone_number").val();
     var organization = $("#resolve-debris-organization").val();
     var plan = $("#resolve-debris-plan").val();
     var date = $("#resolve-debris-datepicker").val();
+    // console.log(name);
+    // console.log(email);
+    // console.log(phone);
+    // console.log(organization);
+    // console.log(plan);
+    // console.log(date);
+    if (name == "" || email == "" || phone == "" || plan == "" || date == ""){
+      Materialize.toast('Please complete the form', 4000, 'rounded');
+    }
+    else {
+      var formData = {name: name, email: email, phone: phone, date: date};
 
-    var formData = {name: name, email: email, phone: phone, date: date};
+      //change current marker color
+      window.currentMarker.setIcon(window.YELLOW_MARKER_URL);
+      debrisResolveSubmitFormToData(window.currentMarker, formData);
+      $('.bottom-sheet').modal('close');
+      Materialize.toast('Debris Resolved', 4000, 'rounded');
 
-    //change current marker color
-    window.currentMarker.setIcon(window.YELLOW_MARKER_URL);
-    debrisResolveSubmitFormToData(window.currentMarker, formData);
-
+      //reset form to empty
+      $("#resolve-debris-name").val('');
+      $("#resolve-debris-email").val('');
+      $("#resolve-debris-phone_number").val('');
+      $("#resolve-debris-organization").val('');
+      $("#resolve-debris-plan").val('');
+      $("#resolve-debris-datepicker").val('');
+    }
   });
 
   // set up events for form submission
@@ -80,7 +93,7 @@ $(document).ready(function(){
         var markerRef = addMarkerToMapInstance(window.map, newMarker);
         newMarker.markerReference = markerRef;
 
-        markers.push(newMarker);        
+        markers.push(newMarker);
         addMarkerDataToList(newMarker);
 
         console.log(markers);
@@ -109,30 +122,27 @@ $(document).ready(function(){
 });
 
 function onDebrisListElementClick(){
-      
-      console.log("lksadflasj");
-  
-      var articleTitle = $(this).attr('id'); 
-      var results = markers.filter(function(element){
-        return element.description == articleTitle; 
-      });
-  
-      var resultElement = results[0];
-      var resultMarkerRef = resultElement.markerReference;
-  
-      window.currentMarker = resultMarkerRef;
-      window.map.setCenter(resultMarkerRef.position);
-  
-      var infoWindow = new google.maps.InfoWindow({
-        content: resultMarkerRef.content, 
-        maxWidth: 200
-      });
-  
-      clearInfoWindows();
-      infoWindow.open(resultMarkerRef.getMap(), resultMarkerRef);
-  
-      window.previousInfoWindow = infoWindow;
-  
-      // Hide sideNav
-      $('.button-collapse').sideNav('hide');
+  var articleTitle = $(this).attr('id');
+  var results = markers.filter(function(element){
+    return element.description == articleTitle;
+  });
+
+  var resultElement = results[0];
+  var resultMarkerRef = resultElement.markerReference;
+
+  window.currentMarker = resultMarkerRef;
+  window.map.setCenter(resultMarkerRef.position);
+
+  var infoWindow = new google.maps.InfoWindow({
+    content: resultMarkerRef.content,
+    maxWidth: 200
+  });
+
+  clearInfoWindows();
+  infoWindow.open(resultMarkerRef.getMap(), resultMarkerRef);
+
+  window.previousInfoWindow = infoWindow;
+
+  // Hide sideNav
+  $('.button-collapse').sideNav('hide');
 }
