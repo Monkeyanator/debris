@@ -73,6 +73,7 @@ $(document).ready(function(){
         //add marker
         markers.push(newMarker);
         addMarkerToMapInstance(window.map, newMarker);
+        addMarkerDataToList(newMarker);
         //reset form to empty
         $("#debris-form-title").val("");
         $("#debris-form-description").val("");
