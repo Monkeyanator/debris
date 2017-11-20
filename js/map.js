@@ -22,9 +22,8 @@ function initMap() {
     addMarkerToMapInstance(window.map, markers[i]);
     addMarkerDataToList(markers[i]);
   }
-
+  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-  window.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(legend_card);
 
   var autocomplete = new google.maps.places.Autocomplete(input);
 
