@@ -1,6 +1,13 @@
 #map {
     height: 100%;
 }
+
+.geolocation-error {
+  top: auto !important;
+  right: auto !important;
+  bottom: 80%;
+  left:7%;
+}
 .btn {
   background-color: #42a5f5 !important;
 

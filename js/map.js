@@ -95,11 +95,7 @@ function geoLocate(){
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
+  Materialize.toast('You need to enable geolocation', 3000, 'rounded geolocation-error')
   }
 
   function markerDataToContent(marker){
@@ -115,9 +111,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   }
 
   function addMarkerDataToList(marker){
-    $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src=' 
-      + ' " ' + marker.markerUrl + ' " >'    
-      + marker.description +  
+    $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src='
+      + ' " ' + marker.markerUrl + ' " >'
+      + marker.description +
       '</a></li>');
   }
 
