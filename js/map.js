@@ -111,6 +111,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
   }
 
+  function markerDataToList(){
+    
+  }
+
   function addMarkerToMapInstance(mapInstance, marker){
 
     //load position from data.js
