@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+  //S A D B O Y S
+  $(document).on('click', '.debris-list-element', onDebrisListElementClick);
+
   //hide card on submit, show when report debris is pressed
   //toggle when pressing report debris
   $("#report-debris-button").click(() => {
@@ -74,10 +77,13 @@ $(document).ready(function(){
         newMarker.description = description;
         newMarker.markerUrl = "http://probalrashid.com/wp-content/uploads/2015/05/IMG_7184.jpg";
 
-        //add marker
-        markers.push(newMarker);
-        addMarkerToMapInstance(window.map, newMarker);
+        var markerRef = addMarkerToMapInstance(window.map, newMarker);
+        newMarker.markerReference = markerRef;
+
+        markers.push(newMarker);        
         addMarkerDataToList(newMarker);
+
+        console.log(markers);
 
         //reset form to empty
         $("#debris-form-title").val("");
@@ -101,3 +107,32 @@ $(document).ready(function(){
   });
 
 });
+
+function onDebrisListElementClick(){
+      
+      console.log("lksadflasj");
+  
+      var articleTitle = $(this).attr('id'); 
+      var results = markers.filter(function(element){
+        return element.description == articleTitle; 
+      });
+  
+      var resultElement = results[0];
+      var resultMarkerRef = resultElement.markerReference;
+  
+      window.currentMarker = resultMarkerRef;
+      window.map.setCenter(resultMarkerRef.position);
+  
+      var infoWindow = new google.maps.InfoWindow({
+        content: resultMarkerRef.content, 
+        maxWidth: 200
+      });
+  
+      clearInfoWindows();
+      infoWindow.open(resultMarkerRef.getMap(), resultMarkerRef);
+  
+      window.previousInfoWindow = infoWindow;
+  
+      // Hide sideNav
+      $('.button-collapse').sideNav('hide');
+}

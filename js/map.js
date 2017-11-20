@@ -10,6 +10,7 @@ function initMap() {
   window.RED_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png";
   window.YELLOW_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png";
   window.previousInfoWindow = null;
+  window.INITIALIZING = true;
 
   //get reference for all the UI elements
   //pac-card should be invisible by default
@@ -23,8 +24,11 @@ function initMap() {
   //$('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Third Link With Waves</a></li>');
   //use locations from data.js for the markers
   for( i = 0; i < window.markers.length; i++){
+
     //add the marker to the map
     var currentMarkerReference = addMarkerToMapInstance(window.map, window.markers[i]);
+    markers[i].markerReference = currentMarkerReference;
+
     //stuff for sidebar list
     addMarkerDataToList(markers[i]);
   }
@@ -79,6 +83,9 @@ function initMap() {
     infowindowContent.children['place-address'].textContent = address;
     infowindow.open(window.map, marker);
   });
+
+  window.INITIALIZING = false;
+
 }
 
 function geoLocate(){
@@ -132,6 +139,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       maxWidth: 200
     });
 
+    console.log(contentString);
+
     markerReference.content = contentString;
 
     clearInfoWindows();
@@ -142,11 +151,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     return contentString;
   }
 
-  function addMarkerDataToList(marker){
-    $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src='
+  function addMarkerDataToList(marker, id){
+
+    var contentString = '<li><a id="' + marker.description + '" class="waves-effect debris-list-element" href="#!"><img class="avatar" src='
       + ' " ' + marker.markerUrl + ' " >'
       + marker.description +
-      '</a></li>');
+      '</a></li>'; 
+
+    var $listElement = $(contentString);
+
+    $('#slide-out').append($listElement); 
+
   }
 
   function addMarkerToMapInstance(mapInstance, marker){
@@ -177,8 +192,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       window.previousInfoWindow = infoWindow;
     });
 
+    markerRef.debrisData = marker;    
+
     //set the marker debris data
-    markerRef.debrisData = marker;
+    if(!window.INITIALIZING){
+      markers[markers.length - 1].markerReference = markerRef;
+      console.log(markers);
+    }
 
     return markerRef;
 
