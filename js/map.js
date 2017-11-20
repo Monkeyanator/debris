@@ -15,7 +15,6 @@ function initMap() {
   //get reference for all the UI elements
   //pac-card should be invisible by default
   var card = document.getElementById('pac-card');
-  var legend_card = document.getElementById('legend-card');
   var input = document.getElementById('debris-form-location');
   var types = document.getElementById('type-selector');
   var strictBounds = document.getElementById('strict-bounds-selector');
@@ -36,8 +35,6 @@ function initMap() {
   console.log(markers);
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);
-
   var autocomplete = new google.maps.places.Autocomplete(input);
 
   // Bind the map's bounds (viewport) property to the autocomplete object,
@@ -111,7 +108,7 @@ function geoLocate(){
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  Materialize.toast('You need to enable geolocation', 3000, 'rounded geolocation-error')
+  Materialize.toast('You need to enable geolocation', 3000, 'rounded')
   }
 
   function markerDataToContent(marker){
