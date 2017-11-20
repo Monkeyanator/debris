@@ -112,7 +112,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   }
 
   function markerDataToList(){
-    
+    $('#side-list').append();
   }
 
   function addMarkerToMapInstance(mapInstance, marker){
