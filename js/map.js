@@ -25,10 +25,11 @@ function initMap() {
     //add the marker to the map
     var currentMarker = addMarkerToMapInstance(window.map, window.markers[i]);
     window.markers[i].markerReference = currentMarker;
-    addMarkerDataToList(markers[i]);    
+    addMarkerDataToList(markers[i]);
   }
+  window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
-  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);  
+  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);
 
   var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -127,11 +128,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     var infoWindow = new google.maps.InfoWindow();
 
     infoWindow.setContent(contentString);
-    infoWindow.open(markerReference.getMap(), markerReference); 
+    infoWindow.open(markerReference.getMap(), markerReference);
 
     return contentString;
   }
-  
+
   function addMarkerDataToList(marker){
     $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src='
       + ' " ' + marker.markerUrl + ' " >'
@@ -157,8 +158,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     //add event listener to handle when the marker is clicked
     marker.addListener('click', function() {
       window.currentMarker = this;
-    });  
-    
+    });
+
 
     marker.content = contentString;
     var infoWindow = new google.maps.InfoWindow();
