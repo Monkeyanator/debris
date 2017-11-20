@@ -7,6 +7,9 @@ function initMap() {
     center: initialLocation
   });
 
+  window.RED_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png";
+  window.YELLOW_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png";
+
   //get reference for all the UI elements
   //pac-card should be invisible by default
   var card = document.getElementById('pac-card');
@@ -16,9 +19,11 @@ function initMap() {
   var strictBounds = document.getElementById('strict-bounds-selector');
 
   //use locations from data.js for the markers
-  for( i = 0; i < markers.length; i++)
-  addMarkerToMapInstance(window.map, markers[i]);
-
+  for( i = 0; i < window.markers.length; i++){
+    //add the marker to the map
+    var currentMarker = addMarkerToMapInstance(window.map, window.markers[i]);
+    window.markers[i].markerReference = currentMarker;
+  }
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
   window.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(legend_card);
@@ -33,6 +38,7 @@ function initMap() {
   var infowindow = new google.maps.InfoWindow();
   var infowindowContent = document.getElementById('infowindow-content');
   infowindow.setContent(infowindowContent);
+
   var marker = new google.maps.Marker({
     map: window.map,
     anchorPoint: new google.maps.Point(0, -29)
@@ -111,6 +117,23 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
   }
 
+  function debrisResolveSubmitFormToData(markerReference, formData){
+
+    //generate the content string
+    var contentString = "<div><img width='180px' src="
+    + "'" + markerReference.markerUrl + "''"
+    + "/></div>"
+    + formData.name + " will resolve the debris on " + formData.date;
+
+    markerReference.content = contentString;
+    var infoWindow = new google.maps.InfoWindow();
+
+    infoWindow.setContent(contentString);
+    infoWindow.open(markerReference.getMap(), markerReference); 
+
+    return contentString;
+  }
+
   function addMarkerToMapInstance(mapInstance, marker){
 
     //load position from data.js
@@ -120,10 +143,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     var contentString = markerDataToContent(marker);
 
     marker = new google.maps.Marker({
+      icon: window.RED_MARKER_URL,
       position: position,
       map: mapInstance,
       title: marker['description'],
     });
+
+    //add event listener to handle when the marker is clicked
+    marker.addListener('click', function() {
+      window.currentMarker = this;
+    });  
+    
 
     marker.content = contentString;
     var infoWindow = new google.maps.InfoWindow();
@@ -132,5 +162,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setContent(this.content);
       infoWindow.open(this.getMap(), this);
     });
+
+    return marker;
 
   }
