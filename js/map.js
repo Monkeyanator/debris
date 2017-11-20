@@ -15,10 +15,13 @@ function initMap() {
   var types = document.getElementById('type-selector');
   var strictBounds = document.getElementById('strict-bounds-selector');
 
+  //Testing appending list elements
+  //$('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Third Link With Waves</a></li>');
   //use locations from data.js for the markers
-  for( i = 0; i < markers.length; i++)
-  addMarkerToMapInstance(window.map, markers[i]);
-
+  for( i = 0; i < markers.length; i++){
+    addMarkerToMapInstance(window.map, markers[i]);
+    addMarkerDataToList(markers[i]);
+  }
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
   window.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(legend_card);
@@ -111,8 +114,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
   }
 
-  function markerDataToList(){
-    $('#side-list').append();
+  function addMarkerDataToList(marker){
+    $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src=' 
+      + ' " ' + marker.markerUrl + ' " >'    
+      + marker.description +  
+      '</a></li>');
   }
 
   function addMarkerToMapInstance(mapInstance, marker){
