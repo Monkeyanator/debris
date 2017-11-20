@@ -38,23 +38,22 @@ $(document).ready(function(){
     console.log(plan);
     console.log(datepicker);
     Materialize.toast('Debris Resolved', 4000, 'rounded')
-
   });
 
   // set up events for form submission
   $("#form-btn-submit").click(() => {
-    // hide card when you submit
-    // $("#pac-card").hide();
-
     var geocoder = new google.maps.Geocoder();
     var address = $("#debris-form-location").val();
+    var title = $("#debris-form-title").val();
+    var description = $("#debris-form-description").val();
+
+    if (title == "" || description == "" || address == {}){
+      Materialize.toast("Please fill out the form!", 4000,"rounded")
+      return;
+    }
 
     geocoder.geocode({'address': address}, function(results, status) {
       if (status == 'OK') {
-        //grab form data
-        var title = $("#debris-form-title").val();
-        var description = $("#debris-form-description").val();
-
         //grab the location
         var location = results[0].geometry.location;
         var lat = location.lat();
@@ -88,8 +87,7 @@ $(document).ready(function(){
       }
 
       else {
-        Materialize.toast('Geocode was not successful for the following reason: '+ status,4000,'rounded');
-        // alert('Geocode was not successful for the following reason: ' + status);
+        Materialize.toast('Geocode was not successful for the following reason: '+ status, 4000, 'rounded');
       }
     });
 
