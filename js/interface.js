@@ -9,7 +9,9 @@ $(document).ready(function(){
       $("#pac-card").show();
     }
   });
-
+  $("#info-btn-click").click(()=>{
+    $('#modal1').modal('close');
+  })
 // if we cancel the btn, we reset all values to default and we hide
   $("#form-btn-cancel").click(() => {
     $("#pac-card").hide();

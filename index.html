@@ -7,14 +7,11 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <link hwf="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   <!--Custom styles !-->
   <link rel="stylesheet" href="css/styles.css"/>
-
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-
 <body>
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -26,169 +23,167 @@
     $('#modal2').modal();
     $(".button-collapse").sideNav();
     $('#modal1').modal('open');
-
   });
   </script>
-  <!--Legend-card  -->
-  <div class="legend-card" id="legend-card">
+    <!--Legend-card  -->
+    <!-- <div class="legend-card" id="legend-card">
     <div>
-      <div id="title">
-      Legend
+    <div id="title">
+    Legend
+  </div>
+</div>
+<div id="legend-container">
+<div class = "row">
+<div class = "col">
+<img src="https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png" alt = "Red Marker">
+</div>
+<div class = "col">
+<p>Debris Reported</p>
+</div>
+</div>
+<div class = "row">
+<div class = "col">
+<img src="https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png" alt = "Yellow Marker">
+</div>
+<div class = "col">
+<p>Debris Resolved</p>
+</div>
+</div>
+</div>
+</div> -->
+<!-- debris-form card on google maps -->
+<div class="pac-card" id="pac-card">
+  <div>
+    <div id="title">
+      Report a Debris
     </div>
-    </div>
-    <div id="legend-container">
-      <div class = "row">
-        <div class = "col">
-      <img src="https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png" alt = "Red Marker">
-    </div>
-    <div class = "col">
-      <p>Debris Reported</p>
-    </div>
+  </div>
+  <div id="pac-container" class = "form">
+    <div class = "row">
+      <input type="text"placeholder="Title" id="debris-form-title">
     </div>
     <div class = "row">
-      <div class = "col">
-    <img src="https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png" alt = "Yellow Marker">
-  </div>
-  <div class = "col">
-    <p>Debris Resolved</p>
-  </div>
-  </div>
+      <input type="text"placeholder="Description" id = "debris-form-description">
     </div>
-  </div>
-  <!-- debris-form card on google maps -->
-  <div class="pac-card" id="pac-card">
-    <div>
-      <div id="title">
-        Report a Debris
-      </div>
+    <div class = "row">
+      <input type="text"placeholder="Enter a location" id ="debris-form-location">
     </div>
-    <div id="pac-container" class = "form">
-      <div class = "row">
-        <input type="text"placeholder="Title" id="debris-form-title">
-      </div>
-      <div class = "row">
-        <input type="text"placeholder="Description" id = "debris-form-description">
-      </div>
-      <div class = "row">
-        <input type="text"placeholder="Enter a location" id ="debris-form-location">
-      </div>
-      <div class = "row">
-        <div class="file-field input-field">
-          <div class="btn col" id="upload-btn">
-            <i class = "material-icons">attach_file</i>
-            <span class = "col">Attach</span>
-            <input type="file">
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
+    <div class = "row">
+      <div class="file-field input-field">
+        <div class="btn col" id="upload-btn">
+          <i class = "material-icons">attach_file</i>
+          <span class = "col">Attach</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
         </div>
       </div>
-      <div class = "row">
-        <button class="btn waves-effect waves-light red accent-2" id ="form-btn-cancel">Cancel
-          <i class="material-icons right">cancel</i>
-        </button>
-        <button class="btn waves-effect waves-light" id ="form-btn-submit" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
+    </div>
+    <div class = "row">
+      <button class="btn waves-effect waves-light red accent-2" id ="form-btn-cancel">Cancel
+        <i class="material-icons right">cancel</i>
+      </button>
+      <button class="btn waves-effect waves-light" id ="form-btn-submit" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
     </div>
   </div>
+</div>
 
-  <div id="infowindow-content">
-    <img src="" width="16" height="16" id="place-icon">
-    <span id="place-name"  class="title"></span><br>
-    <span id="place-address"></span>
-  </div>
+<div id="infowindow-content">
+  <img src="" width="16" height="16" id="place-icon">
+  <span id="place-name"  class="title"></span><br>
+  <span id="place-address"></span>
+</div>
 
 <!-- Navbar  -->
-  <nav>
-    <!-- Center Logo -->
-    <div class="nav-wrapper grey darken-3">
-      <a href="#" class="brand-logo center">debris</a>
-      <!-- Contents on the left  -->
-      <ul id="nav-mobile" class="left">
-        <li><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
-        <li><a class = "modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="Jump to Current Location"id ="btn-get-geo" ><i class = "material-icons">add_location</i></a> </li>
-      </ul>
-      <!-- Content on the right  -->
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a id="report-debris-button" class="waves-effect waves-light btn">Report debris</a></li>
-        <li><a class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="More Info" href="#modal1"><i class="material-icons">info</i></a></li>
-      </ul>
-    </div>
-  </nav>
+<nav>
+  <!-- Center Logo -->
+  <div class="nav-wrapper grey darken-3">
+    <a href="#" class="brand-logo center">debris</a>
+    <!-- Contents on the left  -->
+    <ul id="nav-mobile" class="left">
+      <li><a data-activates="slide-out" class="button-collapse tooltipped" data-position="bottom" data-delay="50" data-tooltip="Debris Issues"><i class="material-icons">menu</i></a></li>
+      <li><a class = "modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="Jump to Current Location"id ="btn-get-geo" ><i class = "material-icons">add_location</i></a> </li>
+    </ul>
+    <!-- Content on the right  -->
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a id="report-debris-button" class="waves-effect waves-light btn">Report debris</a></li>
+      <li><a class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="More Info" href="#modal1"><i class="material-icons">info</i></a></li>
+    </ul>
+  </div>
+</nav>
 
 <!-- Slidebar on the left -->
-  <ul id="slide-out" class="side-nav">
-    <li><a class="subheader">Debris issues</a></li>
-    <li><div class="divider"></div></li>
-  </ul>
+<ul id="slide-out" class="side-nav">
+  <li><a class="subheader">Debris issues</a></li>
+  <li><div class="divider"></div></li>
+</ul>
 
-  <!-- Popup About us -->
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>About: Debris 🔥</h4>
-      <p>Debris is a Google Maps-based interface that allows you to report the presence and location of debris and detritus leftover from a natural disaster.  You can also find and respond to and resolve these issues on the map. Debris is meant to be an intuitive experience to aid people who wish to participate in natural disaster cleanup or report such issues.</p>
-      <p>Debris is a collaborative project for EECS 330: Human Computer Interaction.   The collaborators are Naomi Chan, Samuel Naser, Michael Guo, and Alex Zhu, who are students at Northwestern University.</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+<!-- Popup About us -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>About: Debris 🔥</h4>
+    <p>Debris is a Google Maps-based interface that allows you to report the presence and location of debris and detritus leftover from a natural disaster.  You can also find and respond to and resolve these issues on the map. Debris is meant to be an intuitive experience to aid people who wish to participate in natural disaster cleanup or report such issues.</p>
+    <p>Debris is a collaborative project for EECS 330: Human Computer Interaction.   The collaborators are Naomi Chan, Samuel Naser, Michael Guo, and Alex Zhu, who are students at Northwestern University.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn waves-effect waves-light" id ="info-btn-click" href="#!">Got it!</button>
+  </div>
+</div>
+
+<!-- Structure -->
+<div id="modal2" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Resolve Issue</h4>
+    <p>Date reported: 11/10/17</p>
+    <div class="row">
+      <form id="resolve-debris-form" class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="resolve-debris-name" type="text" class="validate">
+            <label for="name">First Name, Last Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="resolve-debris-email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="resolve-debris-phone_number" type="tel" class="validate">
+            <label for="phone_number">Phone number</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="resolve-debris-organization" type="text" class="validate">
+            <label for="organization">Organization (if applicable)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="resolve-debris-plan" type="text" class="validate">
+            <label for="plan">Proposed plan</label>
+          </div>
+          <div class="input-field col s6">
+            <input id ="resolve-debris-datepicker" type="text" class="datepicker">
+            <label for="first_name">Target completion date</label>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-
-  <!-- Structure -->
-  <div id="modal2" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Resolve Issue</h4>
-      <p>Date reported: 11/10/17</p>
-      <div class="row">
-        <form id="resolve-debris-form" class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="resolve-debris-name" type="text" class="validate">
-              <label for="name">First Name, Last Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="resolve-debris-email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="resolve-debris-phone_number" type="tel" class="validate">
-              <label for="phone_number">Phone number</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="resolve-debris-organization" type="text" class="validate">
-              <label for="organization">Organization (if applicable)</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="resolve-debris-plan" type="text" class="validate">
-              <label for="plan">Proposed plan</label>
-            </div>
-            <div class="input-field col s6">
-              <input id ="resolve-debris-datepicker" type="text" class="datepicker">
-              <label for="first_name">Target completion date</label>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="resolve-debris-submit">Submit</a>
-    </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="resolve-debris-submit">Submit</a>
   </div>
+</div>
+<div id="map"></div>
 
-  <div id="map"></div>
-
-  <script src="js/data.js"></script>
-  <script src="js/map.js"></script>
-  <script type="text/javascript" src="js/interface.js"></script>
-  <script src="js/datepicker.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3j-gUjpdC_DXhZrk8LjH4BGz6FyE1rQ&libraries=places&callback=initMap"
-  async defer></script>
+<script src="js/data.js"></script>
+<script src="js/map.js"></script>
+<script type="text/javascript" src="js/interface.js"></script>
+<script src="js/datepicker.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3j-gUjpdC_DXhZrk8LjH4BGz6FyE1rQ&libraries=places&callback=initMap"
+async defer></script>
 </body>
 </html>
