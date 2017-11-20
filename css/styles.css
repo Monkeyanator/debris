@@ -1,6 +1,13 @@
 #map {
     height: 100%;
 }
+
+.geolocation-error {
+  top: auto !important;
+  right: auto !important;
+  bottom: 80%;
+  left:7%;
+}
 .btn {
   background-color: #42a5f5 !important;
 
@@ -64,7 +71,7 @@ html, body {
 .avatar {
   /* This image is 687 wide by 1024 tall, similar to your aspect ratio */
   background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
-  
+
   /* make a square container */
   width: 40px;
   height: 40px;
@@ -98,6 +105,22 @@ html, body {
   display: none;
 }
 
+.legend-card{
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+#legend-container {
+  margin-right: 12px;
+  margin-top: 10px;
+  padding-right: 100px;
+}
 #pac-container {
   padding-bottom: 12px;
   margin-right: 12px;

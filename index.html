@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link hwf="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!--Custom styles !-->
   <link rel="stylesheet" href="css/styles.css"/>
@@ -25,8 +25,36 @@
     $('#modal1').modal();
     $('#modal2').modal();
     $(".button-collapse").sideNav();
+    $('#modal1').modal('open');
+
   });
   </script>
+  <!--Legend-card  -->
+  <div class="legend-card" id="legend-card">
+    <div>
+      <div id="title">
+      Legend
+    </div>
+    </div>
+    <div id="legend-container">
+      <div class = "row">
+        <div class = "col">
+      <img src="https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png" alt = "Red Marker">
+    </div>
+    <div class = "col">
+      <p>Debris Reported</p>
+    </div>
+    </div>
+    <div class = "row">
+      <div class = "col">
+    <img src="https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png" alt = "Yellow Marker">
+  </div>
+  <div class = "col">
+    <p>Debris Resolved</p>
+  </div>
+  </div>
+    </div>
+  </div>
   <!-- debris-form card on google maps -->
   <div class="pac-card" id="pac-card">
     <div>
@@ -90,21 +118,11 @@
       </ul>
     </div>
   </nav>
+
 <!-- Slidebar on the left -->
   <ul id="slide-out" class="side-nav">
-    <li><a class="subheader">Search</a></li>
-    <li><div class="user-view">
-      <div class="input-field">
-        <input id="search" type="search" required>
-        <label class="label-icon" for="search"></label>
-        <i class="material-icons">close</i>
-      </div>
-    </div></li>
-
-    <li><div class="divider"></div></li>
     <li><a class="subheader">Debris issues</a></li>
-    <li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Second Link With Waves</a></li>
-    <li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Third Link With Waves</a></li>
+    <li><div class="divider"></div></li>
   </ul>
 
   <!-- Popup About us -->

@@ -10,6 +10,7 @@ $(document).ready(function(){
     }
   });
 
+// if we cancel the btn, we reset all values to default and we hide
   $("#form-btn-cancel").click(() => {
     $("#pac-card").hide();
     $("#debris-form-title").val("");
@@ -43,18 +44,20 @@ $(document).ready(function(){
 
   });
 
-  //set up events for form submission
+  // set up events for form submission
   $("#form-btn-submit").click(() => {
-    $("#pac-card").hide();
     var geocoder = new google.maps.Geocoder();
     var address = $("#debris-form-location").val();
+    var title = $("#debris-form-title").val();
+    var description = $("#debris-form-description").val();
+
+    if (title == "" || description == "" || address == {}){
+      Materialize.toast("Please fill out the form!", 4000,"rounded")
+      return;
+    }
 
     geocoder.geocode({'address': address}, function(results, status) {
       if (status == 'OK') {
-        //grab form data
-        var title = $("#debris-form-title").val();
-        var description = $("#debris-form-description").val();
-
         //grab the location
         var location = results[0].geometry.location;
         var lat = location.lat();
@@ -74,15 +77,22 @@ $(document).ready(function(){
         //add marker
         markers.push(newMarker);
         addMarkerToMapInstance(window.map, newMarker);
+        addMarkerDataToList(newMarker);
         //reset form to empty
         $("#debris-form-title").val("");
         $("#debris-form-description").val("");
         $("#debris-form-location").val(null);
         // Materialize.toast(message, displayLength, className, completeCallback);
-        Materialize.toast('Debris reported!', 4000, 'rounded') // 4000 is the duration of the toast
+        $("#pac-card").hide();
+        Materialize.toast('Debris reported!', 4000, 'rounded'); // 4000 is the duration of the toast
 
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+      }
+      else if (status == "INVALID_REQUEST" || status == "ZERO_RESULTS"){
+        Materialize.toast("Please enter a valid address!", 4000,"rounded");
+      }
+
+      else {
+        Materialize.toast('Geocode was not successful for the following reason: '+ status, 4000, 'rounded');
       }
     });
 

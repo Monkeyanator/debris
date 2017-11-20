@@ -18,15 +18,17 @@ function initMap() {
   var types = document.getElementById('type-selector');
   var strictBounds = document.getElementById('strict-bounds-selector');
 
+  //Testing appending list elements
+  //$('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Third Link With Waves</a></li>');
   //use locations from data.js for the markers
   for( i = 0; i < window.markers.length; i++){
     //add the marker to the map
     var currentMarker = addMarkerToMapInstance(window.map, window.markers[i]);
     window.markers[i].markerReference = currentMarker;
+    addMarkerDataToList(markers[i]);    
   }
 
-  window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-  window.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(legend_card);
+  window.map.controls[google.maps.ControlPosition.LEFT_CENTER].push(legend_card);  
 
   var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -98,11 +100,7 @@ function geoLocate(){
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
+  Materialize.toast('You need to enable geolocation', 3000, 'rounded geolocation-error')
   }
 
   function markerDataToContent(marker){
@@ -132,6 +130,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(markerReference.getMap(), markerReference); 
 
     return contentString;
+  }
+  
+  function addMarkerDataToList(marker){
+    $('#slide-out').append('<li><a class="waves-effect" href="#!"><img class="avatar" src='
+      + ' " ' + marker.markerUrl + ' " >'
+      + marker.description +
+      '</a></li>');
   }
 
   function addMarkerToMapInstance(mapInstance, marker){
