@@ -74,16 +74,16 @@ $(document).ready(function(){
         newMarker.description = description;
         newMarker.markerUrl = "http://probalrashid.com/wp-content/uploads/2015/05/IMG_7184.jpg";
 
-        console.log(newMarker);
-
         //add marker
         markers.push(newMarker);
         addMarkerToMapInstance(window.map, newMarker);
         addMarkerDataToList(newMarker);
+
         //reset form to empty
         $("#debris-form-title").val("");
         $("#debris-form-description").val("");
         $("#debris-form-location").val(null);
+
         // Materialize.toast(message, displayLength, className, completeCallback);
         $("#pac-card").hide();
         Materialize.toast('Debris reported!', 4000, 'rounded'); // 4000 is the duration of the toast
