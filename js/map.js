@@ -78,10 +78,10 @@ function initMap() {
       ].join(' ');
     }
 
-    infowindowContent.children['place-icon'].src = place.icon;
-    infowindowContent.children['place-name'].textContent = place.name;
-    infowindowContent.children['place-address'].textContent = address;
-    infowindow.open(window.map, marker);
+    // infowindowContent.children['place-icon'].src = place.icon;
+    // infowindowContent.children['place-name'].textContent = place.name;
+    // infowindowContent.children['place-address'].textContent = address;
+    // infowindow.open(window.map, marker);
   });
 
   window.INITIALIZING = false;
@@ -135,7 +135,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     + formData.name + " will resolve the debris on " + formData.date;
 
     var infoWindow = new google.maps.InfoWindow({
-      content: contentString, 
+      content: contentString,
       maxWidth: 200
     });
 
@@ -156,11 +156,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     var contentString = '<li><a id="' + marker.description + '" class="waves-effect debris-list-element" href="#!"><img class="avatar" src='
       + ' " ' + marker.markerUrl + ' " >'
       + marker.description +
-      '</a></li>'; 
+      '</a></li>';
 
     var $listElement = $(contentString);
 
-    $('#slide-out').append($listElement); 
+    $('#slide-out').append($listElement);
 
   }
 
@@ -185,14 +185,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     });
 
     markerRef.addListener('click', function(){
-      clearInfoWindows();      
-      window.currentMarker = this;      
+      clearInfoWindows();
+      window.currentMarker = this;
       infoWindow.setContent(this.content);
       infoWindow.open(this.getMap(), this);
       window.previousInfoWindow = infoWindow;
     });
 
-    markerRef.debrisData = marker;    
+    markerRef.debrisData = marker;
 
     //set the marker debris data
     if(!window.INITIALIZING){
@@ -205,7 +205,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   }
 
 function clearInfoWindows(){
-  console.log("CLOSING PREVIOUS INFO WINDOW!"); 
+  console.log("CLOSING PREVIOUS INFO WINDOW!");
   if(window.previousInfoWindow != null){
     window.previousInfoWindow.close();
   }
