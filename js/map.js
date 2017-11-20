@@ -10,6 +10,7 @@ function initMap() {
   //get reference for all the UI elements
   //pac-card should be invisible by default
   var card = document.getElementById('pac-card');
+  var legend_card = document.getElementById('legend-card');
   var input = document.getElementById('debris-form-location');
   var types = document.getElementById('type-selector');
   var strictBounds = document.getElementById('strict-bounds-selector');
@@ -20,6 +21,7 @@ function initMap() {
 
 
   window.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+  window.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(legend_card);
 
   var autocomplete = new google.maps.places.Autocomplete(input);
 

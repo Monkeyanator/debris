@@ -27,6 +27,7 @@
     $(".button-collapse").sideNav();
   });
   </script>
+  <!-- debris-form card on google maps -->
   <div class="pac-card" id="pac-card">
     <div>
       <div id="title">
@@ -65,26 +66,31 @@
       </div>
     </div>
   </div>
+
   <div id="infowindow-content">
     <img src="" width="16" height="16" id="place-icon">
     <span id="place-name"  class="title"></span><br>
     <span id="place-address"></span>
   </div>
+
+<!-- Navbar  -->
   <nav>
+    <!-- Center Logo -->
     <div class="nav-wrapper grey darken-3">
       <a href="#" class="brand-logo center">debris</a>
+      <!-- Contents on the left  -->
       <ul id="nav-mobile" class="left">
         <li><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
         <li><a class = "modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="Jump to Current Location"id ="btn-get-geo" ><i class = "material-icons">add_location</i></a> </li>
       </ul>
-
+      <!-- Content on the right  -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a id="report-debris-button" class="waves-effect waves-light btn">Report debris</a></li>
         <li><a class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="More Info" href="#modal1"><i class="material-icons">info</i></a></li>
       </ul>
     </div>
   </nav>
-
+<!-- Slidebar on the left -->
   <ul id="slide-out" class="side-nav">
     <li><a class="subheader">Search</a></li>
     <li><div class="user-view">
@@ -101,7 +107,7 @@
     <li><a class="waves-effect" href="#!"><img class="avatar" src="http://www.buzzhunt.co.uk/wp-content/2013/07/Tree-in-the-way.jpg">Third Link With Waves</a></li>
   </ul>
 
-  <!-- Modal Structure -->
+  <!-- Popup About us -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>About: Debris 🔥</h4>
@@ -122,32 +128,31 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s6">
-              <input id="name" type="text" class="validate">
-              <label for="first_name">First Name, Last Name</label>
+              <input id="resolve-debris-name" type="text" class="validate">
+              <label for="name">First Name, Last Name</label>
             </div>
             <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">Email</label>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Phone number</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">Organization (if applicable)</label>
+              <input id="resolve-debris-email" type="email" class="validate">
+              <label for="email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Proposed plan</label>
+              <input id="resolve-debris-phone_number" type="tel" class="validate">
+              <label for="phone_number">Phone number</label>
             </div>
             <div class="input-field col s6">
-              <input type="text" class="datepicker">
+              <input id="resolve-debris-organization" type="text" class="validate">
+              <label for="organization">Organization (if applicable)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="resolve-debris-plan" type="text" class="validate">
+              <label for="plan">Proposed plan</label>
+            </div>
+            <div class="input-field col s6">
+              <input id ="resolve-debris-datepicker" type="text" class="datepicker">
               <label for="first_name">Target completion date</label>
             </div>
           </div>

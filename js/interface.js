@@ -25,6 +25,23 @@ $(document).ready(function(){
     Materialize.toast('Debris Resolved', 4000, 'rounded')
   });
 
+  //set up events for resolving debris submission
+  $("#resolve-debris-submit").click(() => {
+    var name = $("#resolve-debris-name").val();
+    var email = $("#resolve-debris-email").val();
+    var phone = $("#resolve-debris-phone_number").val();
+    var organization = $("#resolve-debris-organization").val();
+    var plan = $("#resolve-debris-plan").val();
+    var datepicker = $("#resolve-debris-datepicker").val();
+
+    console.log(name);
+    console.log(email);
+    console.log(phone);
+    console.log(organization);
+    console.log(plan);
+    console.log(datepicker);
+  });
+
   //set up events for form submission
   $("#form-btn-submit").click(() => {
     $("#pac-card").hide();
@@ -56,6 +73,7 @@ $(document).ready(function(){
         //add marker
         markers.push(newMarker);
         addMarkerToMapInstance(window.map, newMarker);
+        //reset form to empty
         $("#debris-form-title").val("");
         $("#debris-form-description").val("");
         $("#debris-form-location").val(null);
