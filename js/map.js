@@ -5,6 +5,7 @@ function initMap() {
   window.map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
     center: initialLocation,
+    streetViewControl: false,
     fullscreenControl: false
   });
 
