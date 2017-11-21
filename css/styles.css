@@ -1,6 +1,4 @@
 .content{
-  /*align-content:center;*/
-  /*background-color: pink;*/
   margin-left: 15px;
 }
 .full{
@@ -45,7 +43,7 @@ html, body {
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
-  height: 100%;
+  height: calc( 100% - 64px );
 }
 #upload-btn {
   height: 40px;
