@@ -114,9 +114,12 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   function markerDataToContent(marker){
 
     //generate the content string
-    var contentString = "<div><img width='180px' src="
+    var contentString =
+    `<h5>${marker.title}</h5>`
+    + "<div><img width='180px' src="
     + "'" + marker.markerUrl + "''"
     + "/></div>"
+    + `<p>${marker.description}</p>`
     + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>";
 
     return contentString;
@@ -126,7 +129,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   function debrisResolveSubmitFormToData(markerReference, formData){
 
     //generate the content string
-    var contentString = "<div><img width='180px' src="
+    var contentString =
+    `<h5>${markerReference.debrisData.title}</h5>`
+    + "<div><img width='180px' src="
     + "'" + markerReference.debrisData.markerUrl + "''"
     + "/></div>"
     + formData.name + " will resolve the debris on " + formData.date;
@@ -150,9 +155,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
   function addMarkerDataToList(marker, id){
 
-    var contentString = '<li><a id="' + marker.description + '" class="waves-effect debris-list-element" href="#!"><img class="avatar" src='
+    var contentString = '<li><a id="' + marker.title + '" class="waves-effect debris-list-element" href="#!"><img class="avatar" src='
       + ' " ' + marker.markerUrl + ' " >'
-      + marker.description +
+      + marker.title +
       '</a></li>';
 
     var $listElement = $(contentString);
@@ -173,7 +178,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       icon: window.RED_MARKER_URL,
       position: position,
       map: mapInstance,
-      title: marker['description'],
+      title: marker['title'],
     });
 
     markerRef.content = contentString;

@@ -124,7 +124,7 @@ $(document).ready(function(){
 function onDebrisListElementClick(){
   var articleTitle = $(this).attr('id');
   var results = markers.filter(function(element){
-    return element.description == articleTitle;
+    return element.title == articleTitle;
   });
 
   var resultElement = results[0];
