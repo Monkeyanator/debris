@@ -50,7 +50,9 @@ function initMap() {
     map: window.map,
     anchorPoint: new google.maps.Point(0, -29)
   });
+  marker.addListener('',function(){
 
+  });
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
     marker.setVisible(false);
@@ -74,14 +76,16 @@ function initMap() {
         (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
     }
-
-    // infowindowContent.children['place-icon'].src = place.icon;
-    // infowindowContent.children['place-name'].textContent = place.name;
-    // infowindowContent.children['place-address'].textContent = address;
-    // infowindow.open(window.map, marker);
   });
-
-  window.INITIALIZING = false;
+  function markercancel(){
+    marker.setVisible(false);
+  }
+  //add the click-listener
+  google.maps.event.addDomListener(document.getElementById('form-btn-cancel'),
+  'click',
+  markercancel
+);
+window.INITIALIZING = false;
 
 }
 
@@ -109,105 +113,105 @@ function geoLocate(){
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   Materialize.toast('You need to enable geolocation', 3000, 'rounded')
-  }
+}
 
-  function markerDataToContent(marker){
+function markerDataToContent(marker){
 
-    //generate the content string
-    var contentString = '<div class="content">'
-    + `<h5>${marker.title}</h5>`
-    + "<div><img width='180px' src="
-    + "'" + marker.markerUrl + "''"
-    + "/></div>"
-    + `<p>${marker.description}</p>`
-    + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>"
-    + '</div>'
+  //generate the content string
+  var contentString = '<div class="content">'
+  + `<h5>${marker.title}</h5>`
+  + "<div><img width='180px' src="
+  + "'" + marker.markerUrl + "''"
+  + "/></div>"
+  + `<p>${marker.description}</p>`
+  + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>"
+  + '</div>'
 
 
-    return contentString;
+  return contentString;
 
-  }
+}
 
-  function debrisResolveSubmitFormToData(markerReference, formData){
+function debrisResolveSubmitFormToData(markerReference, formData){
 
-    //generate the content string
-    var contentString = '<div class="content">'
-    + `<h5>${markerReference.debrisData.title}</h5>`
-    + "<div><img width='180px' src="
-    + "'" + markerReference.debrisData.markerUrl + "''"
-    + "/></div>"
-    + formData.name + " will resolve the debris on " + formData.date;
-    + '</div>'
+  //generate the content string
+  var contentString = '<div class="content">'
+  + `<h5>${markerReference.debrisData.title}</h5>`
+  + "<div><img width='180px' src="
+  + "'" + markerReference.debrisData.markerUrl + "''"
+  + "/></div>"
+  + formData.name + " will resolve the debris on " + formData.date;
+  + '</div>'
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 200,
-    });
+  var infoWindow = new google.maps.InfoWindow({
+    content: contentString,
+    maxWidth: 200,
+  });
 
-    console.log(contentString);
+  console.log(contentString);
 
-    markerReference.content = contentString;
+  markerReference.content = contentString;
 
+  clearInfoWindows();
+  infoWindow.open(markerReference.getMap(), markerReference);
+
+  window.previousInfoWindow = infoWindow;
+
+  return contentString;
+}
+
+function addMarkerDataToList(marker, id){
+
+  var contentString = '<li><a id="' + marker.title + '" class="waves-effect debris-list-element" href="#!"><img class="avatar" src='
+  + ' " ' + marker.markerUrl + ' " >'
+  + marker.title +
+  '</a></li>';
+
+  var $listElement = $(contentString);
+
+  $('#slide-out').append($listElement);
+
+}
+
+function addMarkerToMapInstance(mapInstance, marker){
+
+  //load position from data.js
+  var position = new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']);
+
+  //generate content string based on url
+  var contentString = markerDataToContent(marker);
+
+  markerRef = new google.maps.Marker({
+    icon: window.RED_MARKER_URL,
+    position: position,
+    map: mapInstance,
+    title: marker['title'],
+  });
+
+  markerRef.content = contentString;
+  var infoWindow = new google.maps.InfoWindow({
+    maxWidth: 200,
+  });
+
+  markerRef.addListener('click', function(){
     clearInfoWindows();
-    infoWindow.open(markerReference.getMap(), markerReference);
-
+    window.currentMarker = this;
+    infoWindow.setContent(this.content);
+    infoWindow.open(this.getMap(), this);
     window.previousInfoWindow = infoWindow;
+  });
 
-    return contentString;
+  markerRef.debrisData = marker;
+
+  //set the marker debris data
+  if(!window.INITIALIZING){
+    markers[markers.length - 1].markerReference = markerRef;
+    console.log(markers);
   }
 
-  function addMarkerDataToList(marker, id){
+  return markerRef;
 
-    var contentString = '<li><a id="' + marker.title + '" class="waves-effect debris-list-element" href="#!"><img class="avatar" src='
-      + ' " ' + marker.markerUrl + ' " >'
-      + marker.title +
-      '</a></li>';
-
-    var $listElement = $(contentString);
-
-    $('#slide-out').append($listElement);
-
-  }
-
-  function addMarkerToMapInstance(mapInstance, marker){
-
-    //load position from data.js
-    var position = new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']);
-
-    //generate content string based on url
-    var contentString = markerDataToContent(marker);
-
-    markerRef = new google.maps.Marker({
-      icon: window.RED_MARKER_URL,
-      position: position,
-      map: mapInstance,
-      title: marker['title'],
-    });
-
-    markerRef.content = contentString;
-    var infoWindow = new google.maps.InfoWindow({
-      maxWidth: 200,
-    });
-
-    markerRef.addListener('click', function(){
-      clearInfoWindows();
-      window.currentMarker = this;
-      infoWindow.setContent(this.content);
-      infoWindow.open(this.getMap(), this);
-      window.previousInfoWindow = infoWindow;
-    });
-
-    markerRef.debrisData = marker;
-
-    //set the marker debris data
-    if(!window.INITIALIZING){
-      markers[markers.length - 1].markerReference = markerRef;
-      console.log(markers);
-    }
-
-    return markerRef;
-
-  }
+}
 
 function clearInfoWindows(){
   console.log("CLOSING PREVIOUS INFO WINDOW!");
