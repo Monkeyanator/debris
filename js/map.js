@@ -4,7 +4,8 @@ function initMap() {
   var initialLocation = {lat: 38.164871, lng: -85.58541799999999};
   window.map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
-    center: initialLocation
+    center: initialLocation,
+    fullscreenControl: false
   });
 
   window.RED_MARKER_URL = "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png";
