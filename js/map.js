@@ -114,13 +114,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   function markerDataToContent(marker){
 
     //generate the content string
-    var contentString =
-    `<h5>${marker.title}</h5>`
+    var contentString = '<div class="content">'
+    + `<h5>${marker.title}</h5>`
     + "<div><img width='180px' src="
     + "'" + marker.markerUrl + "''"
     + "/></div>"
     + `<p>${marker.description}</p>`
-    + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>";
+    + "<a style='width: 180px;' class='waves-effect waves-light btn modal-trigger' href='#modal2'>Resolve</a>"
+    + '</div>'
+
 
     return contentString;
 
@@ -129,16 +131,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   function debrisResolveSubmitFormToData(markerReference, formData){
 
     //generate the content string
-    var contentString =
-    `<h5>${markerReference.debrisData.title}</h5>`
+    var contentString = '<div class="content">'
+    + `<h5>${markerReference.debrisData.title}</h5>`
     + "<div><img width='180px' src="
     + "'" + markerReference.debrisData.markerUrl + "''"
     + "/></div>"
     + formData.name + " will resolve the debris on " + formData.date;
+    + '</div>'
 
     var infoWindow = new google.maps.InfoWindow({
       content: contentString,
-      maxWidth: 200
+      maxWidth: 200,
     });
 
     console.log(contentString);
@@ -183,7 +186,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
     markerRef.content = contentString;
     var infoWindow = new google.maps.InfoWindow({
-      maxWidth: 200
+      maxWidth: 200,
     });
 
     markerRef.addListener('click', function(){
